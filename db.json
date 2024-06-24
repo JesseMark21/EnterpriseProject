@@ -17,31 +17,6 @@
         "name": "Mushroom Risotto",
         "description": "Creamy risotto with sautéed mushrooms and Parmesan cheese.",
         "image_url": "https://example.com/mushroom_risotto.jpg"
-      },
-      {
-        "name": "Margherita Pizza",
-        "description": "Classic pizza with fresh tomatoes, mozzarella, and basil.",
-        "image_url": "https://example.com/margherita_pizza.jpg"
-      },
-      {
-        "name": "BBQ Ribs",
-        "description": "Tender pork ribs with a smoky barbecue sauce.",
-        "image_url": "https://example.com/bbq_ribs.jpg"
-      },
-      {
-        "name": "Beef Stroganoff",
-        "description": "Tender beef in a creamy mushroom sauce, served over egg noodles.",
-        "image_url": "https://example.com/beef_stroganoff.jpg"
-      },
-      {
-        "name": "Penne Arrabbiata",
-        "description": "Penne pasta in a spicy tomato sauce with garlic and chili flakes.",
-        "image_url": "https://example.com/penne_arrabbiata.jpg"
-      },
-      {
-        "name": "Lobster Bisque",
-        "description": "Creamy lobster soup with a hint of sherry.",
-        "image_url": "https://example.com/lobster_bisque.jpg"
       }
     ]
   }
