@@ -42,66 +42,6 @@
         "name": "Lobster Bisque",
         "description": "Creamy lobster soup with a hint of sherry.",
         "image_url": "https://example.com/lobster_bisque.jpg"
-      },
-      {
-        "name": "Vegetable Stir Fry",
-        "description": "Mixed vegetables sautéed in a tangy soy sauce.",
-        "image_url": "https://example.com/vegetable_stir_fry.jpg"
-      },
-      {
-        "name": "Chicken Tikka Masala",
-        "description": "Chunks of grilled chicken in a creamy tomato curry sauce.",
-        "image_url": "https://example.com/chicken_tikka_masala.jpg"
-      },
-      {
-        "name": "Beef Tacos",
-        "description": "Soft tortillas filled with seasoned beef, lettuce, and cheese.",
-        "image_url": "https://example.com/beef_tacos.jpg"
-      },
-      {
-        "name": "Salmon Teriyaki",
-        "description": "Grilled salmon with a sweet and savory teriyaki glaze.",
-        "image_url": "https://example.com/salmon_teriyaki.jpg"
-      },
-      {
-        "name": "Eggplant Parmesan",
-        "description": "Breaded and fried eggplant slices topped with marinara and cheese.",
-        "image_url": "https://example.com/eggplant_parmesan.jpg"
-      },
-      {
-        "name": "Shrimp Scampi",
-        "description": "Shrimp sautéed in garlic butter and white wine sauce, served over linguine.",
-        "image_url": "https://example.com/shrimp_scampi.jpg"
-      },
-      {
-        "name": "Pulled Pork Sandwich",
-        "description": "Slow-cooked pulled pork with BBQ sauce on a toasted bun.",
-        "image_url": "https://example.com/pulled_pork_sandwich.jpg"
-      },
-      {
-        "name": "Greek Salad",
-        "description": "Fresh salad with tomatoes, cucumbers, olives, feta cheese, and Greek dressing.",
-        "image_url": "https://example.com/greek_salad.jpg"
-      },
-      {
-        "name": "Stuffed Bell Peppers",
-        "description": "Bell peppers stuffed with rice, ground beef, and tomatoes.",
-        "image_url": "https://example.com/stuffed_bell_peppers.jpg"
-      },
-      {
-        "name": "Chicken Alfredo",
-        "description": "Pasta in a creamy Alfredo sauce with grilled chicken.",
-        "image_url": "https://example.com/chicken_alfredo.jpg"
-      },
-      {
-        "name": "Fish and Chips",
-        "description": "Beer-battered fish fillets with crispy fries and tartar sauce.",
-        "image_url": "https://example.com/fish_and_chips.jpg"
-      },
-      {
-        "name": "Chocolate Lava Cake",
-        "description": "Warm chocolate cake with a gooey molten center.",
-        "image_url": "https://example.com/chocolate_lava_cake.jpg"
       }
     ]
   }
