@@ -1,23 +1,18 @@
-# Use an official Node.js runtime as a parent image
-FROM node:22.2.0
+# Example Dockerfile setup
+FROM node:22
 
-# Set the working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install dependencies
 RUN npm install
 
-# Copy the rest of the application code
 COPY . .
 
-# Build the app
-RUN npm run build
+# Make sure the following lines are included if they were missed previously
+COPY src ./src
+COPY public ./public
 
-# Expose the port the app runs on
-EXPOSE 3000
+EXPOSE 8080
 
-# Define the command to run the app
-CMD ["npm", "start"]
+CMD ["npm", "run", "build"]
