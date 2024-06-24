@@ -1,12 +1,18 @@
 import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import cors from 'cors';
 
 const app = express();
 
 // Get the current file path and directory name
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+// Enable CORS for all routes
+app.use(cors({
+  origin: 'http://localhost:8080' // Allow requests from this origin
+}));
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
