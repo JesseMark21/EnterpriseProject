@@ -8,14 +8,12 @@ const store = createStore({
   },
   mutations: {
     ADD_TO_FAVORITES(state, dish) {
-      console.log("ADDING DISH", dish);
       state.favoriteDishes.push(dish);
     },
     REMOVE_FROM_FAVORITES(state, dishToRemove) {
       state.favoriteDishes = state.favoriteDishes.filter(
         (dish) => dish !== dishToRemove
       );
-      console.log("FAVORITES", state.favoriteDishes);
     }
   },
   actions: {

@@ -45,7 +45,6 @@ const loadRestaurants = async () => {
   try {
     loading.value = true;
     restaurants.value = await fetchRestaurants();
-    console.log("RESTAURANTS:", restaurants.value);
   } catch (e) {
     error.value = 'Failed to fetch restaurants. Please try again later.';
   } finally {
@@ -55,7 +54,6 @@ const loadRestaurants = async () => {
 
 const filteredList = (dishes) => {
   return dishes.filter(dish => {
-    console.log("dish src", dish.image_url);
     return selectedFilters.value.every(filter => dish.description.toLowerCase().includes(filter.toLowerCase()));
   });
 };
