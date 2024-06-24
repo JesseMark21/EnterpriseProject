@@ -4,7 +4,6 @@
       <img :src="`https://jessemark21.github.io/img/${restaurantName}/${imageSrc}`" alt="Restaurant Image" class="restaurant-image" />
       <div class="overlay">
         <h2 class="restaurant-name">{{ restaurantName }}</h2>
-        <h2>{{ imageSrc }}</h2>
         <!-- <button class="favorite-button fas fa-star" @click="toggleFavorite">
           <i :class="favoriteClass"></i>
         </button> -->
