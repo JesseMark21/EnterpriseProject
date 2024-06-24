@@ -22,6 +22,8 @@
 import { ref, computed } from 'vue';
 import { useStore } from 'vuex';
 
+const store = useStore();
+
 const props = defineProps({
   imageSrc: {
     type: String,
@@ -70,9 +72,6 @@ const shareDish = () => {
     alert('Sharing is not supported in this browser.');
   }
 };
-
-const store = useStore();
-
 </script>
 
 <style scoped>
