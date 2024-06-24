@@ -10,11 +10,12 @@
         <button @click="removeFilter(index)">x</button>
       </span>
     </div>
+    <!-- :image-src="`https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg`" -->
     <div v-if="!loading">
       <div v-for="restaurant of restaurants" :key="restaurant.name" class="container restaurant">
         <div v-for="dish of filteredList(restaurant.dishes)" :key="dish.name" class="container card">
           <RestaurantCard
-            image-src="https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"
+            :image-src="`https://jessemark21.github.io/img/${restaurant.name}/${dish.image_url}`"
             :restaurant-name="restaurant.name" :dish-name="dish.name">
           </RestaurantCard>
           <button @click="toggleFavorite(dish, restaurant.name)">

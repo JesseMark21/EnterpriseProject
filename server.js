@@ -2,6 +2,7 @@ import express from 'express';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import cors from 'cors';
+import fs from 'fs';
 
 const app = express();
 
@@ -14,27 +15,30 @@ app.use(cors({
   origin: '*' // Allow requests from all origins
 }));
 
-// Use dynamic import for JSON
-const loadJsonData = async () => {
-  const jsonData = await import("./src/data/restaurant.json", { assert: { type: "json" } });
-  return jsonData.default;
+// Serve static files from the 'dist' directory
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Route handler for loading JSON data
+const loadJsonData = () => {
+  try {
+    const jsonData = JSON.parse(fs.readFileSync('./src/data/restaurant.json', 'utf8'));
+    return jsonData;
+  } catch (error) {
+    console.error("Error loading JSON data:", error);
+    throw new Error('Failed to load JSON data');
+  }
 };
 
 // API route handler for /api/data
 app.get('/api/data', async (req, res) => {
   try {
-    const jsonData = await loadJsonData();
-    console.log("GET REQUEST", jsonData);
-    console.log("API", jsonData);
+    const jsonData = loadJsonData();
     res.json(jsonData);
   } catch (error) {
-    console.error("Error loading JSON data:", error);
+    console.error("Error:", error);
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
-// Serve static files from the 'dist' directory
-app.use(express.static(path.join(__dirname, 'dist')));
 
 // Catch-all route for serving the Vue app
 app.get('*', (req, res) => {
