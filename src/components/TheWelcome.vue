@@ -36,21 +36,21 @@ const newFilter = ref('');
 const selectedFilters = ref([]);
 
 const restaurants = ref(null);
-// fetch('https://testapi.io/api/jessedmark/restaurants')
-//     .then(response => response.json())
-//     .then(data => restaurants.value = data);
+fetch('https://testapi.io/api/jessedmark/restaurants')
+    .then(response => response.json())
+    .then(data => restaurants.value = data);
 
-const getRestaurants = () => {
-  axios.get("https://jsonplaceholder.typicode.com/todos")
-    .then((response) => {
-      console.log("RESPONSE", response);
-      response => response.json()
-    })
-    .then(data => restaurants.value = data)
-    .catch((error) => {
-      console.log("ERROR", error);
-    })
-}
+// const getRestaurants = () => {
+//   axios.get("https://jsonplaceholder.typicode.com/todos")
+//     .then((response) => {
+//       console.log("RESPONSE", response);
+//       response => response.json()
+//     })
+//     .then(data => restaurants.value = data)
+//     .catch((error) => {
+//       console.log("ERROR", error);
+//     })
+// }
 
 const store = useStore();
 
