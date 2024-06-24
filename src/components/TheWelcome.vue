@@ -63,6 +63,7 @@ const store = useStore();
 
 const filteredList = (dishes) => {
   return dishes.filter(dish => {
+    console.log("dish src", dish.image_url);
     return selectedFilters.value.every(filter => dish.description.toLowerCase().includes(filter.toLowerCase()));
   });
 };
