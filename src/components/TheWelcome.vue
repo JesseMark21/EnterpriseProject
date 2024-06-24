@@ -14,7 +14,7 @@
       <div v-for="restaurant of restaurants" :key="restaurant.name" class="container restaurant">
         <div v-for="dish of filteredList(restaurant.dishes)" :key="dish.name" class="container card">
           <RestaurantCard
-            :image-src="`https://jessemark21.github.io/img/${restaurant.name}/${dish.image_url}`"
+            :image-src="dish.image_url"
             :restaurant-name="restaurant.name" :dish-name="dish.name">
           </RestaurantCard>
           <button @click="toggleFavorite(dish, restaurant.name)">

@@ -1,7 +1,7 @@
 <template>
   <div class="restaurant-card">
     <div class="image-container">
-      <img :src="imageSrc" alt="Restaurant Image" class="restaurant-image" />
+      <img :src="`https://jessemark21.github.io/img/${restaurantName}/${imageSrc}`" alt="Restaurant Image" class="restaurant-image" />
       <div class="overlay">
         <h2 class="restaurant-name">{{ restaurantName }}</h2>
         <h2>{{ imageSrc }}</h2>
