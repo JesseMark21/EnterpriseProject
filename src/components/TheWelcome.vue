@@ -10,47 +10,60 @@
         <button @click="removeFilter(index)">x</button>
       </span>
     </div>
-    <div v-for="restaurant of restaurants" :key="restaurant.name" class="container restaurant">
-      <div v-for="dish of filteredList(restaurant.dishes)" :key="dish.name" class="container card">
-        <RestaurantCard image-src="https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"
-          :restaurant-name="restaurant.name" :dish-name="dish.name">
-        </RestaurantCard>
-        <button @click="toggleFavorite(dish, restaurant.name)">
-          <span v-if="isFavorite(dish, restaurant.name)">Remove from Favorites</span>
-          <span v-else>Add to Favorites</span>
-        </button>
+    <div v-if="!loading">
+      <div v-for="restaurant of restaurants" :key="restaurant.name" class="container restaurant">
+        <div v-for="dish of filteredList(restaurant.dishes)" :key="dish.name" class="container card">
+          <RestaurantCard
+            image-src="https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg"
+            :restaurant-name="restaurant.name" :dish-name="dish.name">
+          </RestaurantCard>
+          <button @click="toggleFavorite(dish, restaurant.name)">
+            <span v-if="isFavorite(dish, restaurant.name)">Remove from Favorites</span>
+            <span v-else>Add to Favorites</span>
+          </button>
+        </div>
       </div>
     </div>
+    <div v-else>
+      Loading...
+    </div>
+    <p v-if="error">{{ error }}</p>
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { useStore } from 'vuex';
 
 import RestaurantCard from './dish/RestaurantCard.vue';
 
-import axios from 'axios';
+import { fetchRestaurants } from '@/api/restaurantService';
 
 const newFilter = ref('');
 const selectedFilters = ref([]);
 
-const restaurants = ref(null);
-fetch('https://testapi.io/api/jessedmark/restaurants')
-    .then(response => response.json())
-    .then(data => restaurants.value = data);
+const restaurants = ref([]);
+const loading = ref(true);
+const error = ref(null);
 
-// const getRestaurants = () => {
-//   axios.get("https://jsonplaceholder.typicode.com/todos")
-//     .then((response) => {
-//       console.log("RESPONSE", response);
-//       response => response.json()
-//     })
-//     .then(data => restaurants.value = data)
-//     .catch((error) => {
-//       console.log("ERROR", error);
-//     })
-// }
+const loadRestaurants = async () => {
+  try {
+    loading.value = true;
+    restaurants.value = await fetchRestaurants();
+  } catch (e) {
+    error.value = 'Failed to fetch restaurants. Please try again later.';
+  } finally {
+    loading.value = false;
+  }
+};
+
+// axios.get('https://enterpriseproject.railway.internal/restaurants')
+//   .then(response => {
+//     restaurants.value = response.data;
+//   })
+//   .catch(error => {
+//     console.error('Error fetching data:', error);
+//   });
 
 const store = useStore();
 
@@ -86,6 +99,8 @@ const isFavorite = (dish, restaurantName) => {
   dish.restaurantName = restaurantName;
   return store.getters.isDishFavorite(dish);
 };
+
+onMounted(loadRestaurants);
 </script>
 
 <style scoped>
