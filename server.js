@@ -11,7 +11,7 @@ const __dirname = path.dirname(__filename);
 
 // Enable CORS for all routes
 app.use(cors({
-  origin: 'http://localhost:8080' // Allow requests from this origin
+  origin: '*' // Allow requests from all origins
 }));
 
 // Serve static files from the 'dist' directory
