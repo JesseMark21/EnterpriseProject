@@ -10,7 +10,6 @@
         <button @click="removeFilter(index)">x</button>
       </span>
     </div>
-    <!-- :image-src="`https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg`" -->
     <div v-if="!loading">
       <div v-for="restaurant of restaurants" :key="restaurant.name" class="container restaurant">
         <div v-for="dish of filteredList(restaurant.dishes)" :key="dish.name" class="container card">
@@ -60,15 +59,6 @@ const loadRestaurants = async () => {
     loading.value = false;
   }
 };
-
-// axios.get('https://enterpriseproject.railway.internal/restaurants')
-//   .then(response => {
-//     restaurants.value = response.data;
-//   })
-//   .catch(error => {
-//     console.error('Error fetching data:', error);
-//   });
-
 const store = useStore();
 
 const filteredList = (dishes) => {
