@@ -14,6 +14,7 @@ app.use(cors({
   origin: 'http://localhost:8080' // Allow requests from this origin
 }));
 
+// Serve static files from the 'dist' directory
 app.use(express.static(path.join(__dirname, 'dist')));
 
 app.get('*', (req, res) => {
