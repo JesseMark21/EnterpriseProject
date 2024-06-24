@@ -42,14 +42,17 @@ import { fetchRestaurants } from '@/api/restaurantService';
 const newFilter = ref('');
 const selectedFilters = ref([]);
 
-const restaurants = ref([]);
+const restaurants = ref(null);
 const loading = ref(true);
 const error = ref(null);
+
+
 
 const loadRestaurants = async () => {
   try {
     loading.value = true;
     restaurants.value = await fetchRestaurants();
+    console.log("RESTAURANTS:", restaurants.value);
   } catch (e) {
     error.value = 'Failed to fetch restaurants. Please try again later.';
   } finally {
