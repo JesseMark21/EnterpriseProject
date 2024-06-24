@@ -4,8 +4,8 @@
       <img :src="`https://jessemark21.github.io/img/${imageSrc}`" alt="Restaurant Image" class="restaurant-image" />
       <div class="overlay">
         <h2 class="restaurant-name">{{ restaurantName }}</h2>
-        <button class="favorite-btn" @click="toggleFavorite(dish, restaurant.name)">
-          <span v-if="isFavorite(dish, restaurant.name)">X</span>
+        <button class="favorite-btn" @click="toggleFavorite(dish, restaurantName)">
+          <span v-if="isFavorite(dish, restaurantName)">X</span>
           <span v-else>+</span>
         </button>
       </div>
