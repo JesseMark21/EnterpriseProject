@@ -4,9 +4,10 @@
       <img :src="`https://jessemark21.github.io/img/${imageSrc}`" alt="Restaurant Image" class="restaurant-image" />
       <div class="overlay">
         <h2 class="restaurant-name">{{ restaurantName }}</h2>
-        <!-- <button class="favorite-button fas fa-star" @click="toggleFavorite">
-          <i :class="favoriteClass"></i>
-        </button> -->
+        <button class="favorite-btn" @click="toggleFavorite(dish, restaurant.name)">
+          <span v-if="isFavorite(dish, restaurant.name)">X</span>
+          <span v-else>+</span>
+        </button>
       </div>
     </div>
     <div class="restaurant-info">
@@ -19,6 +20,7 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+import { useStore } from 'vuex';
 
 const props = defineProps({
   imageSrc: {
@@ -33,17 +35,26 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  // restaurantLink: {
-  //   type: String,
-  //   required: true,
-  // }
+  dish: {
+    type: Object,
+    required: true,
+  },
 });
 
-const isFavorite = ref(false);
-const favoriteClass = computed(() => (isFavorite.value ? 'fas fa-star' : 'far fa-star'));
+const toggleFavorite = (dish, restaurantName) => {
+  const isFav = isFavorite(dish, restaurantName);
+  if (isFav) {
+    dish.restaurantName = restaurantName;
+    store.dispatch('removeFromFavorites', dish);
+  } else {
+    dish.restaurantName = restaurantName;
+    store.dispatch('addToFavorites', dish);
+  }
+};
 
-const toggleFavorite = () => {
-  isFavorite.value = !isFavorite.value;
+const isFavorite = (dish, restaurantName) => {
+  dish.restaurantName = restaurantName;
+  return store.getters.isDishFavorite(dish);
 };
 
 const shareDish = () => {
@@ -59,6 +70,9 @@ const shareDish = () => {
     alert('Sharing is not supported in this browser.');
   }
 };
+
+const store = useStore();
+
 </script>
 
 <style scoped>

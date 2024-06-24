@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
-import AboutView from '../views/AboutView.vue';
+import FavoritesView from '../views/FavoritesView.vue';
 
 const routes = [
   {
@@ -11,7 +11,7 @@ const routes = [
   {
     path: '/about',
     name: 'about',
-    component: AboutView // No need for lazy-loading here unless necessary
+    component: FavoritesView // No need for lazy-loading here unless necessary
   }
 ];
 

@@ -13,14 +13,9 @@
     <div v-if="!loading">
       <div v-for="restaurant of restaurants" :key="restaurant.name" class="container restaurant">
         <div v-for="dish of filteredList(restaurant.dishes)" :key="dish.name" class="container card">
-          <RestaurantCard
-            :image-src="dish.image_url"
-            :restaurant-name="restaurant.name" :dish-name="dish.name">
+          <RestaurantCard :image-src="dish.image_url" :restaurant-name="restaurant.name" :dish-name="dish.name"
+            :dish="dish">
           </RestaurantCard>
-          <button @click="toggleFavorite(dish, restaurant.name)">
-            <span v-if="isFavorite(dish, restaurant.name)">Remove from Favorites</span>
-            <span v-else>Add to Favorites</span>
-          </button>
         </div>
       </div>
     </div>
@@ -46,8 +41,6 @@ const restaurants = ref(null);
 const loading = ref(true);
 const error = ref(null);
 
-
-
 const loadRestaurants = async () => {
   try {
     loading.value = true;
@@ -59,7 +52,6 @@ const loadRestaurants = async () => {
     loading.value = false;
   }
 };
-const store = useStore();
 
 const filteredList = (dishes) => {
   return dishes.filter(dish => {
@@ -77,22 +69,6 @@ const addFilter = () => {
 
 const removeFilter = (index) => {
   selectedFilters.value.splice(index, 1);
-};
-
-const toggleFavorite = (dish, restaurantName) => {
-  const isFav = isFavorite(dish, restaurantName);
-  if (isFav) {
-    dish.restaurantName = restaurantName;
-    store.dispatch('removeFromFavorites', dish);
-  } else {
-    dish.restaurantName = restaurantName;
-    store.dispatch('addToFavorites', dish);
-  }
-};
-
-const isFavorite = (dish, restaurantName) => {
-  dish.restaurantName = restaurantName;
-  return store.getters.isDishFavorite(dish);
 };
 
 onMounted(loadRestaurants);

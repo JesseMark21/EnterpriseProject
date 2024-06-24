@@ -15,12 +15,9 @@
     </div>
     <div v-else class="container restaurant">
       <div v-for="dish in filteredFavoriteDishes" :key="dish.name" class="container card">
-        <RestaurantCard :key="dish.name" :restaurant-name="dish.restaurantName" :dish-name="dish.name"
+        <RestaurantCard :key="dish.name" :restaurant-name="dish.restaurantName" :dish-name="dish.name" :dish="dish"
           image-src="https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg">
         </RestaurantCard>
-        <button @click="toggleFavorite(dish)">
-          <span>Remove from Favorites</span>
-        </button>
       </div>
     </div>
   </div>
@@ -62,11 +59,6 @@ const addFilter = () => {
 const removeFilter = (index) => {
   selectedFilters.value.splice(index, 1);
 };
-
-const toggleFavorite = (dish) => {
-  store.dispatch('removeFromFavorites', dish); // Correctly remove the specific dish
-};
-
 </script>
 
 <style scoped>
