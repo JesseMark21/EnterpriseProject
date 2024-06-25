@@ -1,8 +1,7 @@
 <template>
   <div class="home-page">
     <header class="header">
-      <img src="../assets/logo.svg" alt="Cuisine Quest Logo" class="logo">
-      <h1 class="title">Cuisine Quest</h1>
+      <img src="../assets/Logo.png" alt="Cuisine Quest Logo" class="logo">
       <p class="tagline">Explore New Flavors: Your Culinary Adventure Starts Here</p>
     </header>
 
@@ -57,9 +56,8 @@
 }
 
 .logo {
-  width: 150px;
+  width: 30rem;
   height: auto;
-  margin-bottom: 1rem;
 }
 
 .title {

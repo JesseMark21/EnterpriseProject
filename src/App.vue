@@ -5,9 +5,13 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <header class="navbar">
     <nav>
-      <RouterLink to="/" class="nav-link" :class="{ 'active': $route.path === '/' }">Home</RouterLink>
-      <RouterLink to="/search" class="nav-link" :class="{ 'active': $route.path === '/search' }">Search</RouterLink>
-      <RouterLink to="/about" class="nav-link" :class="{ 'active': $route.path === '/about' }">Favorites</RouterLink>
+      
+      <RouterLink to="/" class="logo" :class="{ 'active': $route.path === '/' }"><img src="./assets/Logo-nav.png" alt="Logo" class="logo" /></RouterLink>
+      <div class="nav-links">
+        <RouterLink to="/" class="nav-link" :class="{ 'active': $route.path === '/' }">Home</RouterLink>
+        <RouterLink to="/search" class="nav-link" :class="{ 'active': $route.path === '/search' }">Search</RouterLink>
+        <RouterLink to="/about" class="nav-link" :class="{ 'active': $route.path === '/about' }">Favorites</RouterLink>
+      </div>
     </nav>
   </header>
 
@@ -27,14 +31,31 @@ header.navbar {
   padding: 1rem;
   z-index: 1000;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
 nav {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  height: 40px; /* Adjust the height of the logo */
+  position: absolute;
+}
+
+.logo:hover {
+  background-color: transparent;
+}
+
+.nav-links {
+  display: flex;
   justify-content: center;
   align-items: center;
+  flex-grow: 1;
 }
 
 .nav-link {
@@ -51,7 +72,6 @@ nav {
 
 .nav-link.active {
   font-weight: bold;
-  /* Example: Make the active link bold */
   color: #FFD43B;
 }
 
