@@ -68,10 +68,19 @@ const removeFilter = (index) => {
   gap: 20px;
 }
 
-.selected-filters,
-.filter-bar {
+.selected-filters {
   margin-bottom: 1rem;
+  margin-top: 1rem;
 }
+
+.filter-bar {
+  position: fixed;
+  top: 5rem;
+  left: 1rem;
+
+  z-index: 1000;
+}
+
 
 .selected-filter {
   margin-right: 1rem;

@@ -2,14 +2,16 @@
   <div>
     <div class="filter-bar">
       <input type="text" v-model="newFilter" @keyup.enter="addFilter" placeholder="Add filter">
-      <button @click="addFilter">Add</button>
+      <button class="add-filter-btn" @click="addFilter">Add</button>
+
+      <div class="selected-filters">
+        <span v-for="(filter, index) in selectedFilters" :key="index" class="selected-filter">
+          {{ filter }}
+          <button @click="removeFilter(index)">x</button>
+        </span>
+      </div>
     </div>
-    <div class="selected-filters">
-      <span v-for="(filter, index) in selectedFilters" :key="index" class="selected-filter">
-        {{ filter }}
-        <button @click="removeFilter(index)">x</button>
-      </span>
-    </div>
+
     <div v-if="!loading">
       <div v-for="restaurant of restaurants" :key="restaurant.name" class="container restaurant">
         <div v-for="dish of filteredList(restaurant.dishes)" :key="dish.name" class="container card">
@@ -79,12 +81,31 @@ onMounted(loadRestaurants);
   gap: 20px;
 }
 
-.selected-filters,
+.selected-filters {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.add-filter-btn {
+  margin-left: 1rem;
+}
+
 .filter-bar {
-  margin-bottom: 1rem;
+  position: fixed;
+  top: 5rem;
+  left: 1rem;
+
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .selected-filter {
   margin-right: 1rem;
+  background-color: #ffffff27;
+  border-radius: 8px;
+  padding: 0.5rem;
 }
 </style>
