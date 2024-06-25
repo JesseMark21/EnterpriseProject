@@ -5,8 +5,8 @@ import { RouterLink, RouterView } from 'vue-router'
 <template>
   <header class="navbar">
     <nav>
-      <RouterLink to="/" class="nav-link">Home</RouterLink>
-      <RouterLink to="/about" class="nav-link">Favorites</RouterLink>
+      <RouterLink to="/" class="nav-link" :class="{ 'active': $route.path === '/' }">Home</RouterLink>
+      <RouterLink to="/about" class="nav-link" :class="{ 'active': $route.path === '/about' }">Favorites</RouterLink>
     </nav>
   </header>
 
@@ -44,15 +44,24 @@ nav {
 }
 
 .nav-link:hover {
-  text-decoration: underline;
+  font-weight: bold;
+  background-color: transparent;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  /* Example: Make the active link bold */
+  color: #FFD43B;
 }
 
 main {
   position: fixed;
-  top: 80px; /* Adjust this value if needed to accommodate your navbar height */
+  top: 80px;
+  /* Adjust this value if needed to accommodate your navbar height */
   left: 0;
   width: 100%;
-  height: calc(100% - 80px); /* Adjust this value if needed to accommodate your navbar height */
+  height: calc(100% - 80px);
+  /* Adjust this value if needed to accommodate your navbar height */
   padding: 1rem;
   overflow: auto;
 }
