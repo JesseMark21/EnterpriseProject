@@ -6,6 +6,7 @@ import { RouterLink, RouterView } from 'vue-router'
   <header class="navbar">
     <nav>
       <RouterLink to="/" class="nav-link" :class="{ 'active': $route.path === '/' }">Home</RouterLink>
+      <RouterLink to="/search" class="nav-link" :class="{ 'active': $route.path === '/search' }">Search</RouterLink>
       <RouterLink to="/about" class="nav-link" :class="{ 'active': $route.path === '/about' }">Favorites</RouterLink>
     </nav>
   </header>

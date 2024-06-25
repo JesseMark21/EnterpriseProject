@@ -1,82 +1,125 @@
 <template>
-  <div class="home-component py-2">
-    <div class="filter-bar">
-      <div class="filter-input">
-        <input type="text" v-model="newFilter" @keyup.enter="addFilter" placeholder="Add filter">
-        <button class="add-filter-btn" @click="addFilter">Add</button>
+  <div class="home-page">
+    <header class="header">
+      <img src="../assets/logo.svg" alt="Cuisine Quest Logo" class="logo">
+      <h1 class="title">Cuisine Quest</h1>
+      <p class="tagline">Explore New Flavors: Your Culinary Adventure Starts Here</p>
+    </header>
 
-      </div>
+    <section class="description">
+      <p>
+        Embark on a culinary journey with Cuisine Quest, your personal food explorer. We're here to take the guesswork out of trying new cuisines and dishes. Whether you're a curious foodie, have specific dietary needs, or simply want to expand your palate, our app connects you with exciting dishes tailored to your tastes. From local hidden gems to popular hotspots, we'll guide you to your next favorite meal, one ingredient at a time.
+      </p>
+    </section>
 
-      <div class="selected-filters">
-        <span v-for="(filter, index) in selectedFilters" :key="index" class="selected-filter">
-          {{ filter }}
-          <button @click="removeFilter(index)">x</button>
-        </span>
-      </div>
-    </div>
-
-    <div v-if="!loading">
-      <div v-for="restaurant of filteredRestaurants" :key="restaurant.name" class="restaurant-row py-4">
-        <h1 class="restaurant-name">{{ restaurant.name }}</h1>
-        <div class="container restaurant">
-          <div v-for="dish of filteredList(restaurant.dishes)" :key="dish.name" class="container card">
-            <RestaurantCard :image-src="dish.image_url" :restaurant-name="restaurant.name" :dish-name="dish.name"
-              :dish="dish">
-            </RestaurantCard>
+    <section class="steps">
+      <h2>How it works</h2>
+      <ol>
+        <li>
+          <div class="step-title">
+            <img src="../assets/logo.svg" alt="Filter Icon" class="step-icon">
+            <strong>Filter for Ingredients</strong>
           </div>
-        </div>
-      </div>
-    </div>
-    <div v-else>
-      Loading...
-    </div>
-    <p v-if="error">{{ error }}</p>
+          <p>Start by selecting the ingredients you want or need to include in your dishes. Whether you have dietary restrictions, allergies, or simply preferences, our filter feature allows you to customize your search to meet your specific needs. Simply enter the ingredients in the search bar and add them to your filter list.</p>
+        </li>
+        <li>
+          <div class="step-title">
+            <img src="../assets/logo.svg" alt="Search Icon" class="step-icon">
+            <strong>Search Through Your List of Filtered Restaurants</strong>
+          </div>
+          <p>Once you’ve set your filters, explore the curated list of restaurants that meet your criteria. Browse through various options, read reviews, and check out the menus to find the perfect spot for your next meal. Our extensive database ensures you’ll find a variety of restaurants, from hidden local gems to popular hotspots.</p>
+        </li>
+        <li>
+          <div class="step-title">
+            <img src="../assets/logo.svg" alt="Try Dishes Icon" class="step-icon">
+            <strong>Try New Dishes and Share Your Experience</strong>
+          </div>
+          <p>After selecting a restaurant, it’s time to enjoy your meal! Try new dishes that match your filtered ingredients and discover new flavors. Don’t forget to share your experience with others. Leave reviews, rate the dishes, and upload photos to help fellow foodies on their culinary journeys.</p>
+        </li>
+      </ol>
+    </section>
   </div>
 </template>
 
 <script setup>
-import { ref, onMounted, computed } from 'vue';
-import RestaurantCard from './dish/RestaurantCard.vue';
-import { fetchRestaurants } from '@/api/restaurantService';
-
-const newFilter = ref('');
-const selectedFilters = ref([]);
-const restaurants = ref(null);
-const loading = ref(true);
-const error = ref(null);
-
-const loadRestaurants = async () => {
-  try {
-    loading.value = true;
-    restaurants.value = await fetchRestaurants();
-  } catch (e) {
-    error.value = 'Failed to fetch restaurants. Please try again later.';
-  } finally {
-    loading.value = false;
-  }
-};
-
-const filteredList = (dishes) => {
-  return dishes.filter(dish => {
-    return selectedFilters.value.every(filter => dish.description.toLowerCase().includes(filter.toLowerCase()));
-  });
-};
-
-const filteredRestaurants = computed(() => {
-  if (!restaurants.value) return [];
-  return restaurants.value.filter(restaurant => filteredList(restaurant.dishes).length > 0);
-});
-
-const addFilter = () => {
-  if (newFilter.value.trim() !== '' && !selectedFilters.value.includes(newFilter.value.trim())) {
-    selectedFilters.value.push(newFilter.value.trim());
-    newFilter.value = '';
-  }
-};
-
-const removeFilter = (index) => {
-  selectedFilters.value.splice(index, 1);
-};
-
-onMounted(loadRestaurants);
 </script>
+
+<style scoped>
+.home-page {
+  text-align: center;
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.tagline {
+  font-size: 1.25rem;
+  color: #cdcdcd;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: #959595;
+  margin-bottom: 2rem;
+}
+
+.steps {
+  font-size: 1.1rem;
+  color: #cdcdcd;
+}
+
+.steps h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.steps ol {
+  list-style-type: decimal;
+  padding-left: 1.5rem;
+  text-align: left;
+  display: inline-block;
+}
+
+.steps li {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.step-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.step-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 0.5rem;
+}
+
+.steps strong {
+  font-size: 1.2rem;
+}
+
+.steps p {
+  font-size: 1rem;
+  color: #959595;
+  margin: 0.5rem 0 0 0;
+}
+</style>

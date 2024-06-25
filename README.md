@@ -1,17 +1,13 @@
 # enterprise-project
 
-This template should help get you started developing with Vue 3 in Vite.
+Live application: https://enterpriseproject-production.up.railway.app/
 
 ## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+[VSCode](https://code.visualstudio.com/)
 
 ## Project Setup
-
+rename example.env to .env
 ```sh
 npm install
 ```
@@ -19,11 +15,14 @@ npm install
 ### Compile and Hot-Reload for Development
 
 ```sh
-npm run dev
+npm run serve
 ```
 
-### Compile and Minify for Production
+### Compile and Minify for Production + Deploy on Railway
 
 ```sh
 npm run build
+git add .
+git commit -m "message"
+git push
 ```
