@@ -1,0 +1,117 @@
+.home-component {
+  
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+}
+
+.restaurant-row {
+  border-bottom: 2px solid #cdcdcd;
+}
+
+.selected-filters {
+  display: flex;
+  gap: 10px;
+  margin-left: 1rem;
+}
+
+.add-filter-btn {
+  margin-left: 0.5rem;
+}
+
+.filter-bar {
+  position: fixed;
+  top: 6rem;
+  left: 1rem;
+
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected-filter {
+  display: flex;
+  align-items: center;
+  background-color: #f0f0f041;
+  border-radius: 15px;
+  padding: 5px 10px;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.selected-filter button {
+  background: none;
+  border: none;
+  color: #ff0000;
+  font-weight: bold;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.selected-filter button:hover {
+  color: #cc0000;
+}
+
+.filter-bar input[type="text"] {
+  flex: 1;
+  padding: 6px;
+  border: 1px solid #cccccc;
+  background-color: #ffffff41;
+  color: #ffffff;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.filter-bar input[type="text"]:focus {
+  border-color: #007BFF;
+}
+
+.filter-bar input[type="text"] {
+  flex: 1;
+  padding: 6px;
+  border: 1px solid #cccccc41;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.filter-bar input[type="text"]:focus {
+  border-color: #007BFF;
+}
+
+.filter-bar button.add-filter-btn {
+  padding: 6px 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #FFD43B90;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.filter-bar button.add-filter-btn:hover {
+  background-color: #fcc50090;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-bar button.add-filter-btn:active {
+  background-color: #fcc50090;
+  transform: scale(0.98);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.filter-bar button.add-filter-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #FFD43B50;
+}
+
+
