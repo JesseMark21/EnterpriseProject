@@ -97,22 +97,23 @@
     width: 100%;
     padding: 8px;
     margin-top: 8px;
-    background-color: #007bff;
-    color: white;
+    background-color: #ffd43b;
+    color: black;
     border: none;
     border-radius: 4px;
     cursor: pointer;
   }
 
   button:hover {
-    background-color: #0056b3;
+    background-color: #fcc500;
+    font-weight: bold;
   }
 
   a {
     display: block;
     margin-top: 8px;
     text-decoration: none;
-    color: #007bff;
+    color: #ffd43b;
   }
 
   a:hover {
