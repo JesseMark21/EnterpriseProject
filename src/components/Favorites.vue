@@ -16,7 +16,7 @@
     <div v-else class="container restaurant">
       <div v-for="dish in filteredFavoriteDishes" :key="dish.name" class="container card">
         <RestaurantCard :key="dish.name" :restaurant-name="dish.restaurantName" :dish-name="dish.name" :dish="dish"
-          image-src="https://www.foodiesfeed.com/wp-content/uploads/2023/06/burger-with-melted-cheese.jpg">
+          :image-src="dish.image_url">
         </RestaurantCard>
       </div>
     </div>

@@ -2,7 +2,7 @@
   "name": "enterprise-project",
   "version": "0.0.0",
   "private": true,
-  "type": "module", 
+  "type": "module",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
