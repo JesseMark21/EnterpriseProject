@@ -58,7 +58,7 @@
   
   const filteredList = (dishes) => {
     return dishes.filter(dish => {
-      return selectedFilters.value.every(filter => dish.description.toLowerCase().includes(filter.toLowerCase()));
+      return selectedFilters.value.every(filter => dish.description.toLowerCase().includes(filter.toLowerCase()) || dish.name.toLowerCase().includes(filter.toLowerCase()));
     });
   };
   

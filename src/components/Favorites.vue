@@ -2,13 +2,21 @@
   <div class="favorites-component">
     <div class="filter-bar">
       <div class="filter-input">
-        <input type="text" v-model="newFilter" @keyup.enter="addFilter" placeholder="Add filter">
+        <input
+          type="text"
+          v-model="newFilter"
+          @keyup.enter="addFilter"
+          placeholder="Add filter"
+        />
         <button class="add-filter-btn" @click="addFilter">Add</button>
-
       </div>
 
       <div class="selected-filters">
-        <span v-for="(filter, index) in selectedFilters" :key="index" class="selected-filter">
+        <span
+          v-for="(filter, index) in selectedFilters"
+          :key="index"
+          class="selected-filter"
+        >
           {{ filter }}
           <button @click="removeFilter(index)">x</button>
         </span>
@@ -18,12 +26,24 @@
       No favorite dishes found.
     </div>
     <div v-else>
-      <div v-for="restaurant in filteredFavoriteRestaurants" :key="restaurant.name" class="restaurant-row py-4">
+      <div
+        v-for="restaurant in filteredFavoriteRestaurants"
+        :key="restaurant.name"
+        class="restaurant-row py-4"
+      >
         <h1 class="restaurant-name">{{ restaurant.name }}</h1>
         <div class="container restaurant">
-          <div v-for="dish in filteredList(restaurant.dishes)" :key="dish.name" class="container card">
-            <RestaurantCard :image-src="dish.image_url" :restaurant-name="restaurant.name" :dish-name="dish.name"
-              :dish="dish">
+          <div
+            v-for="dish in filteredList(restaurant.dishes)"
+            :key="dish.name"
+            class="container card"
+          >
+            <RestaurantCard
+              :image-src="dish.image_url"
+              :restaurant-name="restaurant.name"
+              :dish-name="dish.name"
+              :dish="dish"
+            >
             </RestaurantCard>
           </div>
         </div>
@@ -33,20 +53,22 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
-import { useStore } from 'vuex';
-import RestaurantCard from './dish/RestaurantCard.vue';
+import { ref, computed } from "vue";
+import { useStore } from "vuex";
+import RestaurantCard from "./dish/RestaurantCard.vue";
 
-const newFilter = ref('');
+const newFilter = ref("");
 const selectedFilters = ref([]);
 
 const store = useStore();
 
 // Function to filter dishes based on selected filters
 const filteredList = (dishes) => {
-  return dishes.filter(dish => {
-    return selectedFilters.value.every(filter =>
-      dish.description.toLowerCase().includes(filter.toLowerCase())
+  return dishes.filter((dish) => {
+    return selectedFilters.value.every(
+      (filter) =>
+        dish.description.toLowerCase().includes(filter.toLowerCase()) ||
+        dish.name.toLowerCase().includes(filter.toLowerCase())
     );
   });
 };
@@ -62,13 +84,18 @@ const filteredFavoriteRestaurants = computed(() => {
     return acc;
   }, {});
 
-  return Object.values(groupedByRestaurant).filter(restaurant => filteredList(restaurant.dishes).length > 0);
+  return Object.values(groupedByRestaurant).filter(
+    (restaurant) => filteredList(restaurant.dishes).length > 0
+  );
 });
 
 const addFilter = () => {
-  if (newFilter.value.trim() !== '' && !selectedFilters.value.includes(newFilter.value.trim())) {
+  if (
+    newFilter.value.trim() !== "" &&
+    !selectedFilters.value.includes(newFilter.value.trim())
+  ) {
     selectedFilters.value.push(newFilter.value.trim());
-    newFilter.value = '';
+    newFilter.value = "";
   }
 };
 
