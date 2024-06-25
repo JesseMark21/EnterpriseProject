@@ -35,6 +35,15 @@
 @media screen and (max-device-width: 480px) and (orientation: portrait) {
   .filter-bar {
     position: relative;
+    top: 1rem;
+    left: 0;
+    flex-direction: column;
+  }
+  .filter-input { 
+    margin-bottom: 1rem;
+  }
+  .selected-filters {
+    flex-wrap: wrap;
   }
 }
 
@@ -42,6 +51,14 @@
 @media screen and (max-device-width: 640px) and (orientation: landscape) {
   .filter-bar {
     position: relative;
+    top: 1rem;
+    left: 0;
+  }
+  .filter-input { 
+    margin-bottom: 1rem;
+  }
+  .selected-filters {
+    flex-wrap: wrap;
   }
 }
 

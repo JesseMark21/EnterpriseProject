@@ -1,8 +1,11 @@
 <template>
   <div class="favorites-component">
     <div class="filter-bar">
-      <input type="text" v-model="newFilter" @keyup.enter="addFilter" placeholder="Add filter">
-      <button class="add-filter-btn" @click="addFilter">Add</button>
+      <div class="filter-input">
+        <input type="text" v-model="newFilter" @keyup.enter="addFilter" placeholder="Add filter">
+        <button class="add-filter-btn" @click="addFilter">Add</button>
+
+      </div>
 
       <div class="selected-filters">
         <span v-for="(filter, index) in selectedFilters" :key="index" class="selected-filter">
