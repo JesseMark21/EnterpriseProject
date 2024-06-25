@@ -1,5 +1,4 @@
 .home-component {
-  
   .container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -31,6 +30,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media screen and (max-device-width: 480px) and (orientation: portrait) {
+  .filter-bar {
+    position: relative;
+  }
+}
+
+/* For Mobile Landscape View */
+@media screen and (max-device-width: 640px) and (orientation: landscape) {
+  .filter-bar {
+    position: relative;
+  }
 }
 
 .selected-filter {
@@ -69,7 +81,7 @@
 }
 
 .filter-bar input[type="text"]:focus {
-  border-color: #007BFF;
+  border-color: #007bff;
 }
 
 .filter-bar input[type="text"] {
@@ -83,14 +95,14 @@
 }
 
 .filter-bar input[type="text"]:focus {
-  border-color: #007BFF;
+  border-color: #007bff;
 }
 
 .filter-bar button.add-filter-btn {
   padding: 6px 20px;
   border: none;
   border-radius: 20px;
-  background-color: #FFD43B90;
+  background-color: #ffd43b90;
   color: black;
   font-size: 16px;
   font-weight: bold;
@@ -111,7 +123,5 @@
 
 .filter-bar button.add-filter-btn:focus {
   outline: none;
-  box-shadow: 0 0 0 3px #FFD43B50;
+  box-shadow: 0 0 0 3px #ffd43b50;
 }
-
-
