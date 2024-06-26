@@ -1,6 +1,7 @@
 <template>
   <div class="favorites-component">
-    <div class="filter-bar">
+    <!-- Positive Filters -->
+    <div class="filter-bar positive">
       <div class="filter-input">
         <input
           type="text"
@@ -22,6 +23,31 @@
         </span>
       </div>
     </div>
+
+    <!-- Negative Filters -->
+    <div class="filter-bar negative">
+      <div class="filter-input">
+        <input
+          type="text"
+          v-model="newNegativeFilter"
+          @keyup.enter="addNegativeFilter"
+          placeholder="Add negative filter"
+        />
+        <button class="add-filter-btn" @click="addNegativeFilter">Add</button>
+      </div>
+
+      <div class="selected-filters">
+        <span
+          v-for="(filter, index) in negativeFilters"
+          :key="index"
+          class="selected-filter"
+        >
+          {{ filter }}
+          <button @click="removeNegativeFilter(index)">x</button>
+        </span>
+      </div>
+    </div>
+
     <div v-if="filteredFavoriteRestaurants.length === 0" class="no-favorites">
       No favorite dishes found.
     </div>
@@ -58,18 +84,28 @@ import { useStore } from "vuex";
 import RestaurantCard from "./dish/RestaurantCard.vue";
 
 const newFilter = ref("");
+const newNegativeFilter = ref("");
 const selectedFilters = ref([]);
+const negativeFilters = ref([]);
 
 const store = useStore();
 
 // Function to filter dishes based on selected filters
 const filteredList = (dishes) => {
   return dishes.filter((dish) => {
-    return selectedFilters.value.every(
+    const includesPositiveFilters = selectedFilters.value.every(
       (filter) =>
         dish.description.toLowerCase().includes(filter.toLowerCase()) ||
         dish.name.toLowerCase().includes(filter.toLowerCase())
     );
+
+    const excludesNegativeFilters = !negativeFilters.value.some(
+      (filter) =>
+        dish.description.toLowerCase().includes(filter.toLowerCase()) ||
+        dish.name.toLowerCase().includes(filter.toLowerCase())
+    );
+
+    return includesPositiveFilters && excludesNegativeFilters;
   });
 };
 
@@ -99,7 +135,21 @@ const addFilter = () => {
   }
 };
 
+const addNegativeFilter = () => {
+  if (
+    newNegativeFilter.value.trim() !== "" &&
+    !negativeFilters.value.includes(newNegativeFilter.value.trim())
+  ) {
+    negativeFilters.value.push(newNegativeFilter.value.trim());
+    newNegativeFilter.value = "";
+  }
+};
+
 const removeFilter = (index) => {
   selectedFilters.value.splice(index, 1);
+};
+
+const removeNegativeFilter = (index) => {
+  negativeFilters.value.splice(index, 1);
 };
 </script>

@@ -23,7 +23,14 @@
 .filter-bar {
   position: fixed;
   top: 6rem;
-  left: 1rem;
+  
+
+  &.negative {
+    right: 1rem !important;
+  }
+  &.positive {
+    left: 1rem;
+  }
 
   z-index: 1000;
 
