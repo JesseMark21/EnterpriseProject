@@ -1,5 +1,5 @@
 <template>
-  <div class="favorites-component">
+  <div class="favorites-component py-2">
     <!-- Positive Filters -->
     <div class="filter-bar positive">
       <div class="filter-input">
