@@ -7,7 +7,7 @@ Live application: https://enterpriseproject-production.up.railway.app/
 [VSCode](https://code.visualstudio.com/)
 
 ## Project Setup
-rename example.env to .env
+Update VUE_APP_API_BASE_URL with your Railway URL
 ```sh
 npm install
 ```

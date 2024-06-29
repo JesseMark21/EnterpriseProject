@@ -4,8 +4,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <template>
   <header class="navbar">
-    <nav>
-      
+    <nav> 
       <RouterLink to="/" class="logo" :class="{ 'active': $route.path === '/' }"><img src="./assets/Logo-nav.png" alt="Logo" class="logo" /></RouterLink>
       <div class="nav-links">
         <RouterLink to="/" class="nav-link" :class="{ 'active': $route.path === '/' }">Home</RouterLink>
